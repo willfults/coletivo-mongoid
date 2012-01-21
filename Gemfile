@@ -7,5 +7,6 @@ group :development do
   gem "bundler", "~> 1.0.14"
   gem "jeweler", "~> 1.6.2"
   gem "turn"
-  gem "sqlite3"
+  gem "mongoid", ">= 2.0.0"
+  gem "bson_ext"
 end

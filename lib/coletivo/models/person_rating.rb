@@ -1,6 +1,21 @@
+require 'mongoid'
+
 module Coletivo
   module Models
-    class PersonRating < ActiveRecord::Base
+    class PersonRating
+      include Mongoid::Document
+      include Mongoid::Timestamps
+
+      field :person_id
+      field :person_type, type: String
+      
+      field :rateable_id
+      field :rateable_type, type: String
+      
+      field :rateable_id
+      field :rateable_type, type: String
+      field :weight, type: BigDecimal, :precision => 5, :scale => 2
+
       belongs_to :person, :polymorphic => true
       belongs_to :rateable, :polymorphic => true
 

@@ -1,0 +1,14 @@
+defaults: &defaults
+  host: '127.0.0.1'
+
+development:
+  <<: *defaults
+  database: coletivo_development
+
+test:
+  <<: *defaults
+  database: coletivo_test
+
+# set these environment variables on your prod server
+production:
+  database: coletivo_production

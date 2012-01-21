@@ -11,18 +11,16 @@ end
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'coletivo'
-
+require 'mongoid'
 require 'test/unit'
 require 'turn'
 require 'shoulda'
 
-ActiveRecord::Base.establish_connection({
-  :adapter => 'sqlite3',
-  :database => ':memory:'
-})
-ActiveRecord::Migration.verbose = false
+Mongoid.load!(File.join(File.dirname(__FILE__), '..', 'config', "mongoid.yml"))
 
-require 'db/schema'
+Mongoid.database.collections.each do |coll|
+  coll.remove if coll.name !~ /system/
+end
 
 class Test::Unit::TestCase
 end

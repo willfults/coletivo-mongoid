@@ -27,9 +27,9 @@ module Coletivo
     # Defaults
     self.ratings_container = Coletivo::Models::PersonRating
   end
-
+  
+  require 'coletivo/mongoid'
   if defined?(Rails)
     require 'coletivo/rails/engine'
-    require 'coletivo/rails/active_record'
   end
 end

@@ -1,14 +1,34 @@
 require 'coletivo'
 
-class User < ActiveRecord::Base
+class User
+  include Mongoid::Document
+  include Mongoid::Timestamps
+  include Coletivo::Models::Person
+  include Coletivo::Models::Recommendable
   has_own_preferences
+
+  field :name, type: String
+  field :email, type: String
 end
 
-class Movie < ActiveRecord::Base
+class Movie
+  include Mongoid::Document
+  include Mongoid::Timestamps
+  include Coletivo::Models::Person
+  include Coletivo::Models::Recommendable
+
+  field :name, type: String
 end
 
-class Actor < ActiveRecord::Base
+class Actor
+  include Mongoid::Document
+  include Mongoid::Timestamps
+  include Coletivo::Models::Person
+  include Coletivo::Models::Recommendable
+
+  field :name, type: String
 end
+
 
 def ratings_container
   Coletivo::Config.ratings_container
@@ -16,14 +36,8 @@ end
 
 class Test::Unit::TestCase
   def setup
-    truncate! :person_ratings, :users, :movies, :actors
-  end
-
-  private
-
-  def truncate!(*tables)
-    [*tables].each do |t|
-      ActiveRecord::Base.connection.execute("DELETE FROM #{t}")
+    Mongoid.database.collections.each do |coll|
+      coll.remove if coll.name !~ /system/
     end
   end
 end
