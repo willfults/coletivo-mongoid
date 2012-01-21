@@ -10,7 +10,7 @@ This is a fork of {coletivo}[https://github.com/diogenes/coletivo], if you need 
 
   sudo gem install coletivo-mongoid
   
-  or in your rails app, add following line in Gemfile:
+or in your rails app, add following line to Gemfile:
   
   gem "coletivo-mongoid"
 
