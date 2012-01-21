@@ -14,13 +14,13 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "coletivo"
-  gem.homepage = "http://github.com/diogenes/coletivo"
+  gem.name = "coletivo-mongoid"
+  gem.homepage = "http://github.com/siuying/coletivo-mongoid"
   gem.license = "MIT"
-  gem.summary = %Q{A simple Rails 3 recommendations engine}
-  gem.description = %Q{A simple Rails 3 recommendations engine}
-  gem.email = "diogenes.araujo@gmail.com"
-  gem.authors = ["Diógenes Falcão"]
+  gem.summary = %Q{A simple Rails 3 recommendations engine using Mongoid models}
+  gem.description = %Q{A simple Rails 3 recommendations engine using Mongoid models}
+  gem.email = "francis@ignition.hk"
+  gem.authors = ["Francis Chong", "Diógenes Falcão"]
   gem.files = Dir["{lib}/**/*"]
   # dependencies defined in Gemfile
 end

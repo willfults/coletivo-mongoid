@@ -1,20 +1,38 @@
-= coletivo
+= coletivo-mongoid
 
-A simple Rails 3 recommendations engine.
+A simple Rails 3 recommendations engine for Mongoid models.
+
 Coletivo uses {Euclidean Distance}[http://en.wikipedia.org/wiki/Euclidean_distance] or {Pearson's Correlation Coefficient}[http://en.wikipedia.org/wiki/Pearson_product-moment_correlation_coefficient] to calculate the similarity between persons and their preferences.
+
+This is a fork of {coletivo}[https://github.com/diogenes/coletivo], if you need ActiveRecord support, check coletivo.
 
 == Installation:
 
-  sudo gem install coletivo
-  rails g coletivo
-  rake db:migrate
+  sudo gem install coletivo-mongoid
+  
+  or in your rails app, add following line in Gemfile:
+  
+  gem "coletivo-mongoid"
 
 == Usage:
 
 At your Rails model that represents a person (can be an _User_, _Member_, or something like that):
 
-  class User < ActiveRecord::Base
+  class User
+    include Mongoid::Document
+    include Coletivo::Models::Person
+    include Coletivo::Models::Recommendable
     has_own_preferences
+
+    # ...
+  end
+  
+At your models that represent something that can be recommend (such as _Movie_):
+
+  class Movie
+    include Mongoid::Document
+    include Coletivo::Models::Person
+    include Coletivo::Models::Recommendable
 
     # ...
   end
@@ -34,7 +52,7 @@ By default, the similarity strategy used is Euclidean Distance, but you can chan
   Movie.find_recommendations_for(current_user, :strategy => :pearson)
 
 
-== Contributing to coletivo
+== Contributing to coletivo-mongoid
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
@@ -46,5 +64,7 @@ By default, the similarity strategy used is Euclidean Distance, but you can chan
 
 == Copyright
 
-Copyright (c) 2011 Diógenes Falcão. See LICENSE.txt for
-further details.
+Copyright (c) 2011 Diógenes Falcão. 
+Copyright (c) 2012 Francis Chong.
+
+See LICENSE.txt for further details.
