@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "coletivo-mongoid"
-  s.version = "0.0.3"
+  s.version = "0.0.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Francis Chong", "Di\u{f3}genes Falc\u{e3}o"]

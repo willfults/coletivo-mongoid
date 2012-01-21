@@ -12,7 +12,7 @@ module Coletivo
       field :rateable_id, type: String
       field :rateable_type, type: String
 
-      field :weight, type: BigDecimal, :precision => 5, :scale => 2
+      field :weight, type: Float
 
       belongs_to :person, :polymorphic => true
       belongs_to :rateable, :polymorphic => true
