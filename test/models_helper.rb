@@ -14,7 +14,6 @@ end
 class Movie
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Coletivo::Models::Person
   include Coletivo::Models::Recommendable
 
   field :name, type: String
@@ -23,7 +22,6 @@ end
 class Actor
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Coletivo::Models::Person
   include Coletivo::Models::Recommendable
 
   field :name, type: String

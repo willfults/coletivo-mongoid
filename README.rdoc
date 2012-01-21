@@ -31,7 +31,6 @@ At your models that represent something that can be recommend (such as _Movie_):
 
   class Movie
     include Mongoid::Document
-    include Coletivo::Models::Person
     include Coletivo::Models::Recommendable
 
     # ...
