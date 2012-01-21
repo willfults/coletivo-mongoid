@@ -6,14 +6,12 @@ module Coletivo
       include Mongoid::Document
       include Mongoid::Timestamps
 
-      field :person_id
+      field :person_id, type: String
       field :person_type, type: String
       
-      field :rateable_id
+      field :rateable_id, type: String
       field :rateable_type, type: String
-      
-      field :rateable_id
-      field :rateable_type, type: String
+
       field :weight, type: BigDecimal, :precision => 5, :scale => 2
 
       belongs_to :person, :polymorphic => true

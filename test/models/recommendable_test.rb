@@ -69,8 +69,10 @@ class RecommendableTest < Test::Unit::TestCase
         }
 
         recommendations = Movie.find_recommendations_for(@person1,
-          :preferences => p, :strategy => strategy)
-
+          :preferences => p, :strategy => strategy).to_a
+          
+        assert_not_nil recommendations.index(m2)
+        assert_not_nil recommendations.index(m4)
         assert recommendations.index(m2) < recommendations.index(m4)
       end
 
@@ -89,7 +91,7 @@ class RecommendableTest < Test::Unit::TestCase
         }
 
         assert_equal 1, Movie.find_recommendations_for(@person1,
-          :preferences => p, :strategy => strategy, :limit => 1).size
+          :preferences => p, :strategy => strategy, :limit => 1).to_a.count
       end
     end
   end

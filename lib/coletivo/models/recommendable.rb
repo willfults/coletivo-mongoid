@@ -12,8 +12,7 @@ module Coletivo
             load_preferences_for_recommendation(person)
           top = predict_highest_ratings(person, preferences, options)
           ids = top.collect(&:last)
-
-          where(:id => ids).limit(options[:limit]).all
+          where(:_id.in => ids).limit(options[:limit]).all
         end
 
         def map_ratings_to_preferences(ratings)

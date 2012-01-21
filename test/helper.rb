@@ -8,15 +8,18 @@ rescue Bundler::BundlerError => e
   exit e.status_code
 end
 
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
-$LOAD_PATH.unshift(File.dirname(__FILE__))
-require 'coletivo'
 require 'mongoid'
+Mongoid.configure do |config|
+  config.master = Mongo::Connection.new.db("coletivo")
+end
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
+require 'coletivo'
+Mongoid.logger = Logger.new($stdout, :debug)
+
+
 require 'test/unit'
 require 'turn'
 require 'shoulda'
-
-Mongoid.load!(File.join(File.dirname(__FILE__), '..', 'config', "mongoid.yml"))
 
 Mongoid.database.collections.each do |coll|
   coll.remove if coll.name !~ /system/
