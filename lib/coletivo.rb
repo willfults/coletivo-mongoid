@@ -4,7 +4,7 @@ require 'active_support'
 module Coletivo
   module Models
     autoload :Recommendable, 'coletivo/models/recommendable'
-    autoload :Person, 'coletivo/models/person'
+    autoload :User, 'coletivo/models/person'
     autoload :PersonRating, 'coletivo/models/person_rating'
   end
 
